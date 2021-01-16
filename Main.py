@@ -1,22 +1,13 @@
-from flask import Flask, jsonify, abort
-app = Flask(__name__)
+import sys
+from core.Adder import Adder
 
-@app.errorhandler(400)
-def resource_not_found(e):
-    return jsonify(error=str(e)), 400
+if __name__ == "__main__":
+    if (len(sys.argv) != 2):
+        sys.exit('Received an illegal number of arguments.')
 
-@app.route('/', methods=['GET'])
-def hello():
-    return jsonify(about='Hello, WP!')
-
-@app.route('/twoadder/<num>', methods=['GET'])
-def one_adder(num):
     try:
-        input = (int) (num)
+        input = (int) (sys.argv[1])
     except ValueError:
-         abort(400, description='Received an invalid argument. Please enter an integer.')
+         sys.exit('Received an invalid argument. Please enter an integer.')
 
-    return jsonify({'result': 2 + input})
-
-if __name__ == '__main__':
-    app.run(debug=True)
+    print(Adder.oneAdder(input))
