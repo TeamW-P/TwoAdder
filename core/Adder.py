@@ -1,5 +1,5 @@
 class Adder:
 
     @staticmethod
-    def oneAdder(input):
+    def twoAdder(input):
         return input + 2

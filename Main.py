@@ -10,4 +10,4 @@ if __name__ == "__main__":
     except ValueError:
          sys.exit('Received an invalid argument. Please enter an integer.')
 
-    print(Adder.oneAdder(input))
+    print(Adder.twoAdder(input))
